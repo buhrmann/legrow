@@ -1,0 +1,12 @@
+[flake8]
+max-line-length = 120
+ignore =
+    E203,  # space before : (needed for how black formats slicing)
+    E731,  # do not assign a lambda expression, use a def
+    D401,  # First line should end with a period
+    D,  # All docstrings for now
+    W503  # line break before binary operator, black seems to produce this, not compatible with Pep8
+per-file-ignores =
+    __init__.py:F401
+; max-complexity = 18
+# exclude =

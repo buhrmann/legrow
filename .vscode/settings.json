@@ -1,0 +1,70 @@
+{
+    // Default (langugage-independent) settings
+    "editor.tabSize": 4,
+    "editor.trimAutoWhitespace": true,
+    "editor.insertSpaces": true,
+    "editor.autoIndent": "full",
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "git.ignoreLimitWarning": true,
+    "files.autoSave": "afterDelay",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.associations": {
+        "*.ipp": "cpp",
+        "*.hpp": "cpp"
+    },
+    "diffEditor.originalEditable": true,
+    // Language specific. Some are global others overwrite
+
+    // Python
+    "[python]": {
+        "editor.formatOnSave": true,
+        // Black does not support (partial) formatting on paste :(
+        "editor.formatOnPaste": false,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.formatOnSaveTimeout": 3000
+    },
+    "python.autoComplete.addBrackets": true,
+
+    // Python auto-formatting
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length", "120"
+    ],
+
+    // Python linting
+    "python.linting.enabled": true,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+
+    "python.linting.flake8Args": [
+        "--ignore=E303",
+        "--max-line-length=120"
+    ],
+
+    // These will be used by flake8 internally
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=numpy,pandas"
+    ],
+
+    "python.linting.mypyArgs": [
+      "--ignore-missing-imports",
+      "--follow-imports=silent",
+      "--show-column-numbers",
+      "--allow-redefinition"
+    ],
+
+    // YAML
+    "[yaml]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
+    "yaml.validate": true,
+    "yaml.format.enable": true
+}
