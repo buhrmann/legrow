@@ -7,6 +7,8 @@ from .render.turtle import TRender
 
 
 class LSystem:
+    """Simple, single letter symbol system."""
+
     def __init__(self, axiom: str, rules: dict):
         self.axiom = axiom
         self.rules = rules
@@ -17,13 +19,8 @@ class LSystem:
         return cls(cfg["axiom"], cfg["rules"])
 
     def rewrite(self, axiom) -> str:
-
-        res = ""
-        for c in axiom:
-            s = self.rules[c]
-            res += s
-
-        return res
+        """For each symbol in axiom, apply rule or keep it if no corresponding rule exists."""
+        return "".join(self.rules.get(c, c) for c in axiom)
 
     def __iter__(self):
         return self
@@ -37,11 +34,11 @@ class LSystem:
 
 
 if __name__ == "__main__":
-    cfgs = resources.lsystems()
-    ls = LSystem.from_config(cfgs[sys.argv[1]])
+    cfg = resources.lsystems()[sys.argv[1]]
+    ls = LSystem.from_config(cfg)
 
-    for _ in range(15):
+    for _ in range(int(sys.argv[2])):
         next(ls)
 
     print(len(ls.state))
-    # TRender(ls).render()
+    TRender(ls).render(size=cfg.get("size", 10), angle=cfg.get("angle", 90))

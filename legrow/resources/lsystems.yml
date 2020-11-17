@@ -1,48 +1,83 @@
+--- # ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Examples: https://en.wikipedia.org/wiki/L-system
+# Convention: symbols not in the rules will be kept unchanged
+btree:
+  # https://martinmcbride.org/post/fractals/l-systems-trees/
+  axiom: F
+  rules:
+    F: G[+F]-F
+    G: GG
+  angle: 45
+  size: 10
+plant:
+  # https://martinmcbride.org/post/fractals/l-systems-trees/
+  axiom: F
+  rules:
+    F: G+[[F]-F]-G[-GF]+F
+    G: GG
+  angle: 20
+  size: 5
+koch:
+  axiom: F
+  rules:
+    F: "F+F-F-F+F"
+  angle: 90
+koch_tri:
+  axiom: F
+  rules:
+    F: F+F--F+F
+  angle: 60
+dragon:
+  axiom: FX
+  rules:
+    X: X+YF+
+    Y: -FX-Y
+  angle: 90
+  size: 9
+sierpinski_tri:
+  axiom: "F-G-G"
+  rules:
+    F: "F-G+F+G-F"
+    G: GG
+  angle: 120
+  size: 10
+sierpinski_sq1:
+  axiom: F--XF--F--XF
+  rules:
+    X: XF+G+XF--F--XF+G+X
+  angle: 45
+  size: 5
+sierpinski_sq2:
+  axiom: F+XF+F+XF
+  rules:
+    X: XF-F+F-XF+F+XF-F+F-X
+  angle: 90
+  size: 5
+sierpinski_arrow:
+  axiom: F
+  rules:
+    F: G-F-G
+    G: F+G+F
+  angle: 60
+  size: 5
+cantor:
+  axiom: F
+  rules:
+    F: FJF
+    J: JJJ
 algae:
   axiom: A
   rules:
     A: AB
     B: A
-btree:
-  axiom: "0"
-  rules:
-    "1": "11"
-    "0": "1[0]0"
-    "[": "["
-    "]": "]"
-cantor:
-  axiom: A
-  rules:
-    A: ABA
-    B: BBB
-koch:
-  axiom: F
-  rules:
-    F: "F+F-F-F+F"
-    "+": "+"
-    "-": "-"
-dragon:
-  axiom: FX
-  rules:
-    F: F
-    "+": "+"
-    "-": "-"
-    X: X+YF+
-    Y: -FX-Y
-  angle: 90
-  size: 9
 calli:
   axiom: "1"
   rules:
     "1": "23"
-    "2": "2"
     "3": "24"
     "4": "25"
     "5": "65"
     "6": "7"
     "7": "8"
     "8": "9[3]"
-    "9": "9"
-    "[": "["
-    "]": "]"

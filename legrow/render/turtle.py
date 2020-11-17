@@ -1,4 +1,5 @@
 import turtle
+from collections import deque
 
 
 class TRenderBase:
@@ -16,22 +17,33 @@ class TRenderBase:
 
 
 class TRender(TRenderBase):
-    """Basic turtle renderer."""
+    """Basic turtle renderer. For debugging purposes mainly."""
 
     def render(self, size=9, angle=90):
 
+        pen = self.pen
+        stack = deque()
         self.screen.tracer(0, 0)
+
         for cmd in self.state:
             if cmd in ("F", "G"):
-                self.pen.forward(size)
-            elif cmd == "[":
-                self.pen.push()
-            elif cmd == "]":
-                self.pen.pop()
+                pen.forward(size)
+            if cmd == "J":
+                pen.up()
+                pen.forward(size)
+                pen.down()
             elif cmd == "+":
-                self.pen.left(angle)
+                pen.left(angle)
             elif cmd == "-":
-                self.pen.right(angle)
+                pen.right(angle)
+            elif cmd == "[":
+                stack.append((pen.heading(), pen.position()))
+            elif cmd == "]":
+                heading, pos = stack.pop()
+                pen.up()
+                pen.setheading(heading)
+                pen.setposition(pos)
+                pen.down()
 
         self.screen.update()
         self.screen.exitonclick()
