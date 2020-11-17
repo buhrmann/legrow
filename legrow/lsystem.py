@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 
 from . import resources
+from .render.turtle import TRender
 
 
 class LSystem:
@@ -38,5 +39,9 @@ class LSystem:
 if __name__ == "__main__":
     cfgs = resources.lsystems()
     ls = LSystem.from_config(cfgs[sys.argv[1]])
-    for _ in range(10):
-        print(next(ls))
+
+    for _ in range(15):
+        next(ls)
+
+    print(len(ls.state))
+    # TRender(ls).render()

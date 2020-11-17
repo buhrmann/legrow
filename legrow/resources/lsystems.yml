@@ -1,9 +1,9 @@
 # Examples: https://en.wikipedia.org/wiki/L-system
 algae:
-  axiom: a
+  axiom: A
   rules:
-    a: ab
-    b: a
+    A: AB
+    B: A
 btree:
   axiom: "0"
   rules:
@@ -22,6 +22,16 @@ koch:
     F: "F+F-F-F+F"
     "+": "+"
     "-": "-"
+dragon:
+  axiom: FX
+  rules:
+    F: F
+    "+": "+"
+    "-": "-"
+    X: X+YF+
+    Y: -FX-Y
+  angle: 90
+  size: 9
 calli:
   axiom: "1"
   rules:
