@@ -12,7 +12,7 @@ btree:
   size: 10
 plant:
   # https://martinmcbride.org/post/fractals/l-systems-trees/
-  axiom: F
+  axiom: +++F
   rules:
     F: G+[[F]-F]-G[-GF]+F
     G: GG
